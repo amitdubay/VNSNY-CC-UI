@@ -1,0 +1,738 @@
+html, body { height: 100%;  }
+html{font-family:"Myriad Pro Regular",Arial, Times;}
+body {
+      font-size: .875rem;
+  font-family:"Myriad Pro Regular",Arial, Times;
+  font-weight:normal;
+  margin:0px; padding:0px;
+  color:#231F20;
+}
+
+ @font-face {
+    font-family: 'Myriad Pro Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Myriad Pro Regular'), url('../fonts/MYRIADPRO-REGULAR.woff') format('woff');
+    }
+	
+	 @font-face {
+    font-family: 'Myriad Pro Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Myriad Pro Bold'), url('../fonts/MYRIADPRO-BOLD.woff') format('woff');
+    }
+	
+    p, form, label, div, li, ul, .btn, .form-control, .dropdown-menu{font-size:.875rem; color:#231F20;}
+.form-control {height: 32px !important;}
+.h1, h1{font-size:2rem}
+.h2, h2{font-size:1.5rem !important}
+.h3, h3{font-size:1rem}
+.h4, h4{font-size:1rem}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+	
+.fixed-top{min-height: 70px;}
+.shadow{box-shadow: 0 .1rem 0.4rem rgba(0,0,0,.12)!important;}	
+
+/* Sidebar  */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 72px 0 0;
+    box-shadow: inset -1px 0 0 rgb(0 0 0 / 10%);
+    width: 360px !important;
+    max-width: 100%;
+}
+.rightContentArea{
+	position: fixed;
+    margin-top: 0px;
+    margin-left: 360px !important;
+    padding-top: 0 !important;
+    width: calc(100% - 360px);
+    padding: 5px 20px 20px 20px !important;
+}
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 397px);
+  padding-top:0px;
+  overflow-x: hidden;
+  overflow-y: auto;  
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link   {
+  margin-right: 4px;
+  color: #999;
+ }
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+[role="main"] {
+  padding-top: 75px; /* Space for fixed navbar */
+}
+
+.navbar-brand {
+  background-color: #fff;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+a.navbar-brand.d-block{width:265px}
+
+nav.navbar.navbar-expand-lg.fixed-top.navbar-light.shadow.nav-custom {
+    padding:2px 15px 2px 15px;
+    background-color: #fff;
+}
+
+/* login screen css starts here */
+.login-title{font-size: 1.5rem; padding-bottom:22px;}
+.login-height{height:100vh;}
+.bg-blue{background-color:#005DAA; }
+.login-logo-outer{justify-content:center; width: 100%; display:flex;}
+.login-form{width:100%; display:flex; align-items:center; justify-content: center;}
+.login-form form{width:400px}
+.login-logo{display:flex;align-items:center;justify-content: center;width: 100%;}
+
+.login-form .form-group .form-control{
+    border-radius: 50px;
+    border: 1px solid #005DAA;
+}
+.inputIconBlock{
+    position: relative;
+    display: block;
+}
+.inputIconBlock .form-control{
+      padding-left: 38px;
+}
+.inputIconBlock img{
+      height: 18px;
+    position: absolute;
+    left: 12px;
+    top: 10px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #005DAA !important;
+    border-color: #005DAA !important;
+}
+.btn-primary:hover,
+.btn-primary:focus{
+    opacity: .95;
+}
+.btn-rounded{
+    border-radius: 25px !important;
+    min-width: 100px;
+}
+.btn-showpass{
+    position: absolute;
+    right: 5px !important;
+    top: 0;
+}
+.btn-showpass img{
+    position: relative;
+    left: auto;
+    top: auto;
+}
+.btn-showpass .hide{
+    display: none;
+}
+button:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* Clinician list view css starts here */
+
+.nav-custom{ padding: 0 1rem !important; }
+.nav-custom .navbar-brand{
+    box-shadow: none !important;
+	padding-top:0;
+    padding-bottom:0;
+	background-color:#fff;
+}
+span.tagLine{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #005DAA;
+    margin-left: 15px;
+    padding-left: 15px;
+    border-left: 1px solid #231F20;
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+.nav-custom .navbar-nav-custom{
+    align-items: center;
+}
+.nav-custom .navbar-nav-custom .nav-link{
+        padding-right: 1.3rem;
+    padding-left: 1.3rem;
+}
+.nav-custom .navbar-nav-custom .userProfile .nav-link{
+    padding-right: 0 !important;
+     color: #005DAA;
+}
+.nav-custom .navbar-nav-custom .userProfile .dropdown-toggle:after{
+    position: relative;
+    top: -6px;
+    left: -26px;
+    border-top: .5em solid;
+    border-right: .5em solid transparent;
+    border-left: .5em solid transparent;
+}
+.nav-custom .navbar-nav-custom .userProfile .dropdown-menu{
+    right: 20px;
+}
+.nav-custom .navbar-nav-custom .userProfile .nav-link .userNameLabel{
+     color: #005DAA;
+}
+.nav-custom .navbar-nav-custom .refreshedDate{
+    line-height: 79px;
+     margin-right: 20px;
+}
+.nav-custom .navbar-nav-custom .refreshedDate span{
+    color: #AFBD22;
+    font-weight: 600;
+}
+.body-support-block{
+    padding-top:71px;
+}
+div#navbarSupportedContent {
+    height: 55px;
+}
+.leftNavMain{
+    text-align: center;
+    margin: 15px 20px 15px 20px;
+}
+.leftNavMain .btn-group{
+    display: flex;
+    border-radius: .25rem;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 30%);
+}
+.leftNavMain button{
+        width: 180px;
+    background-color: transparent !important;
+    color: #333333;
+        padding: .5rem .75rem;
+    border-color: #eaeaea !important;
+   
+}
+.leftNavMain button:hover,
+.leftNavMain button:focus{
+   background-color: transparent !important;
+    color: #005DAA !important;
+     border-color: #eaeaea !important;
+
+}
+.leftNavMain button:first-child{
+    border-right: none !important;
+}
+.leftNavMain button:last-child{
+    border-left: none !important;
+}
+.leftNavMain button.btn-active{
+      background-color: #005DAA !important;
+    color: #fff !important; 
+     border-color: #005DAA !important;
+ 
+}
+.searchBar{
+    margin: 0 20px;
+    position: relative;
+}
+.searchBar input{
+    font-weight: normal;
+}
+.searchBar button{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: transparent !important;
+        border-color: transparent !important;
+}
+.filters{
+    margin: 10px 20px 10px 20px;
+        padding-bottom: 15px;
+    border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.pl-8{padding-left:8px}
+.pr-8{padding-right:8px}
+
+.filters label{
+    margin-bottom: 0;
+}
+
+.filters .actionButtonGroup{
+    text-align: right;
+    margin-top: 7px;
+}
+.filters .actionButtonGroup button{
+    min-width: 93px;
+}
+.sidebar-sticky{
+    margin: 0 0 0 20px;
+    padding-right: 4px;
+}
+.usersList{
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+}
+.usersList li{
+     margin: 0 0 10px 0;
+    padding: 0 0;
+    list-style: none; 
+     display: block;
+}
+.usersList li a{
+    display: block;
+    padding: 12px 8px 12px 75px;;
+    position: relative;
+    border: 1px solid rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 15%);
+}
+.usersList li a:hover,
+.usersList li a:focus{
+    text-decoration: none !important;
+    background:#F3FAFF;
+}
+.usersList li a .userProfilePic{
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    line-height: 52px;
+     background: #ccc;
+    color: #fff;
+    text-align: center;
+        display: inline-block;
+    position: absolute;
+        left: 12px;
+    top:7px;
+    font-size: 1.2rem;
+}
+.usersList li a .userProfileDetails p{
+     color: #000;
+    margin: 0 0;
+    font-weight: 500;
+}
+.usersList li a .userProfileDetails small{
+    display: block;
+        color: #333;
+}
+.usersList li a .rightArrow{
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.usersList li a .rightArrow img{
+    height: 28px;
+}
+
+.actionButtonGroup .btn-outline-primary {
+    color: #005DAA;
+    border-color: #005DAA;
+    margin-right: 14px;
+}
+
+.actionButtonGroup .btn-outline-primary:hover,
+.actionButtonGroup .btn-outline-primary:focus {
+    color: #005DAA;
+    background-color: transparent;
+    border-color: #005DAA;
+}
+
+.actionButtonGroup .btn-outline-primary:not(:disabled):not(.disabled):active{
+	color: #0269bf;
+    background-color:transparent;
+    border-color: #005DAA;
+}
+
+span.userProfileDetails h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0px !important;
+	color:#231F20;
+	font-weight:600;
+}
+.yellow{
+    background: #FCB924 !important;
+}
+.green{
+    background:#AFBD22 !important;
+}
+.form-group {
+    margin-bottom: 10px;
+}
+.pageTitleContainer{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+.pageTitleContainer h1{
+    font-size: 1.6rem;
+    margin: 0 0;
+}
+.calendarContainer{
+    display: flex;
+       align-content: center;
+    justify-content:center;
+    align-items: center;
+}
+
+.calendarContainer .calendarBlock{
+    margin-right: 5px;
+    border-right: 2px solid #000;
+    padding-right: 20px;
+    height: 34px;
+}
+
+
+button.btn.btn-secondary.btn-active.w-fix {
+    margin: 0 10px 0 15px;
+}
+
+button.btn.btn-secondary.btn-active.fix {
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+button.btn.btn-secondary.fix{
+	border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius:6px;
+}
+.pageTitleContainer h3 {
+    margin-top: 12px;
+}
+
+button.btn.btn-primary.w-fix {
+    width: 45px;
+    height: 35px;
+    padding: 6px;
+    position: relative;
+    margin-left: 15px;
+}
+
+button.btn.btn-secondary.w-fix {
+    width: 45px;
+    height: 35px;
+    padding: 6px;
+    position: relative;
+    margin-left: 10px;
+	background-color:#fff !important
+}
+
+
+.btn-active{
+      background-color: #005DAA !important;
+ 
+}
+ 
+.cardsContainer{
+    display: flex;
+       align-content: center;
+    justify-content:center;
+    align-items: center;
+
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-top: 15px;
+}
+.cardsContainer .card{
+    padding: 2px 14px 0px 14px;
+    border: 2px solid #B4B4B4;
+    text-align: center;
+    margin: 0 5px;
+    width: 143.571429%;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 30%);
+    min-height: 79px;
+}
+.cardsContainer .card h3{
+    font-size:1.6rem;
+    font-weight: 600;
+    color: #005DAA;
+    margin:0px;
+    line-height:31px;
+}
+.cardsContainer .card  p{
+    margin: 3px;
+    color: #6D6D6D;
+    line-height: 16px;
+ }
+
+.tableIndicationBlock{
+	display: flex;
+	align-content: center;
+	justify-content:space-between;
+	align-items: center; 
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+.tableIndicationBlock h4{
+     margin: 0 0;
+}
+
+.tableIndicationBlock .indicationList ul{
+    list-style: none;
+    margin: 0 0;
+    padding: 0 0;  
+}
+.tableIndicationBlock .indicationList li{
+    margin: 0 10px;
+    padding: 0 0;
+    display: inline-block;
+ }
+.tableIndicationBlock .indicationList li span{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-right: 3px;
+    background: #ccc;
+}
+.onSheduleEstimatedCircle{
+    border: 2px solid  #AFBD22 !important;
+    background: transparent !important;
+}
+.overdueCircle{
+    border: 2px solid  #FCB924 !important;
+    background: transparent !important;  
+}
+.delayedCircle{
+    background: #FF4F4F !important;   
+}
+.table-custom td h4{
+    color: #005DAA;
+    margin: 0 0 0px 0;
+    line-height: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.table-custom td p{
+    margin: 0 0;
+}
+.table td, .table th{
+    vertical-align: middle !important;
+}
+.table-custom thead{
+    background-color: #F2F2F2 !important;
+}
+.onScheduleActualCircle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    background: #AFBD22 !important;
+}
+.onScheduleEstimatedCircle{
+   width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle; 
+    border: 2px solid #AFBD22 !important;
+}
+.overdueEstimatedCircle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;  
+        border: 2px solid #FCB924 !important;
+}
+.delayedActualCircle{
+      width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    background: #FF4F4F !important;  
+}
+.futureCicle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;  
+        border: 2px solid #ccc !important; 
+}
+.table td, .table th {
+    padding: .5rem 0.5rem;
+
+}
+.table-custom td:last-child{
+    text-align: right;
+}
+.table-custom th:last-child{
+    text-align: center;
+}
+.table-custom td:nth-child(7){
+    text-align: center;
+}
+.table-custom .table-custom{
+    width: 100%;
+}
+.table-custom .table-custom th:first-child{
+    border-bottom: none;
+   border-top: none;
+padding:0 0.5rem;
+text-align: left;
+font-weight: 500;
+}
+.table-custom .table-custom th:last-child{
+border-bottom: none;
+border-top: none;
+padding:0 0.5rem;
+text-align: right;
+font-weight: 500;
+}
+.btn-disable{background:grey; color:#ccc;}
+.btn-disable:hover{background:grey; color:#ccc;}
+
+/* calendar drop down css */
+.mat-calendar-header {padding-top: 0px !important;}
+.mat-calendar-controls {display: flex; margin:0 !important}
+.calendar-outer{min-width: 190px;
+    position: relative;
+    background-color: #F2F2F2;
+    min-height: 34px; padding: 0 10px 0 10px;
+    vertical-align: middle; display:flex; align-items: center; }
+.calendar-outer:hover{background-color:#DBD8D8; }
+.calendar-btn-outer{padding: 15px; width:420px; height: 265px;  position: absolute;  z-index: 900;  top: 45px; right: 1px; background-color: #fff; border: 1px solid #ccc; box-shadow: 2px 3px 10px rgb(0 0 0 / 50%);  display: flex;}
+.button-group{width: 39%; flex-flow: column; display: flex; text-align: center; padding: 0px 14px 0px 0px;}
+.button-group .btn-outline-primary{color: #005DAA; background-color: transparent;}
+.button-group .btn-info{background-color: #00B6DE; border-color:#00B6DE; color: #fff;}
+.button-group .btn{min-width:90%;}
+.btn-outline-primary:not(:disabled):not(.disabled):active{background-color: #00B6DE; border-color: #00B6DE;}
+.calendar-view{display: flex;  border: 1px solid #ddd;}
+.mat-calendar-table-header-divider::after {background: transparent !important;}
+.mat-calendar-table-header th {padding:0px !important}
+.calendar-view {display: flex; border: 1px solid #707070; border-radius: 6px !important; width: 59%; justify-content: center;}
+.mat-calendar {display: block; width: 216px !important; font-family: "Myriad Pro Regular",Arial, Times; letter-spacing: normal;}
+.calendar-btn-outer .button-group p:last-child {margin-top: 12px;}
+.mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {border-color: transparent !important; color: #fff !important;}
+.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){background-color: transparent !important;}
+.selected-date { background-color: #ADADAD; border-radius: 12px; border: 2px solid #fff;}
+  .selected-date-7 {background-color: #005DAA; background-color: #005DAA; border-radius: 12px; border: 2px solid #fff;}
+  .calendarDayDisabled{ background-color: white; color: rgba(0,0,0,.38);} 
+  .mat-calendar-body-cell-content.mat-focus-indicator {color: #fff !important;}
+  .mat-calendar-body-disabled>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {color: #000 !important;}
+  .mat-calendar-table-header th {text-align: center; color: #000; font-weight: 600;}
+
+/* overwritten classes*/
+.mat-body, .mat-body-1, .mat-typography, .mat-h4, .mat-subheading-1, .mat-typography h4, .mat-h5, .mat-typography h5, a.navbar-brand.d-block, .mat-h4, .mat-subheading-1, .mat-typography h4 {
+    font-family:"Myriad Pro Regular",Arial, Times;
+    letter-spacing: normal;
+    font-size: 1.25rem;
+}
+.dropdown { right: -17px;}
+.mat-h3, .mat-subheading-2, .mat-typography h3 {
+    font-family:"Myriad Pro Regular",Arial, Times;
+    letter-spacing: normal;
+    margin: 0;
+}
+.mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate {
+    background: #707070 !important;
+}
+
+/* small popup css */
+.cdk-overlay-container {z-index: 1040 !important;}
+h4#staticBackdropLabel { font-size: 1rem; margin-bottom: 10px;}
+.modal-header{padding:0 !important;}
+.modal-body{ padding: 1rem 1rem 0px 1rem; text-align: center;}
+h2.time-color{color:#FF4F4F;margin-bottom: 10px !important; }
+p.mb-3{margin-bottom:3px !important }
+.mat-dialog-actions{  padding: 8px 0 12px;}
+.modal-title span{ vertical-align: text-bottom; margin-right: 9px;}
+p.mb-15{margin-bottom:15px;}
+.modal-body button.btn.btn-primary { min-width: 20%;}
+.modal-body h3.time-color{color: #FF4F4F; font-weight: 600;}
+ 
+ /* password icon fix for edge  */
+ input::-ms-reveal,input::-ms-clear { display: none; }
+
+ /* data-table default css */
+ .mat-table{ font-family: "Myriad Pro Regular",Arial, Times; letter-spacing: normal;color:#231F20;}
+ .mat-header-cell{color:#231F20;}
+ .mat-header-cell{font-size: inherit; font-weight: 500;}
+ .example-table-container {
+    position: relative;
+    height: 56vh;
+    overflow-y: auto;
+    border:1px solid #ccc;
+  }
+  
+  #data-table table {width: 100%;}
+  tr.mat-row {height: 69px !important;}
+
+  #data-table th.mat-header-cell,
+  #data-table td.mat-cell,
+  #data-table td.mat-footer-cell {
+    text-align: left;
+    border-bottom: 0px;
+  }
+  #data-table tr.mat-row.cdk-row:nth-child(odd){
+background-color: #FDFDFD;
+  }
+  
+.mat-paginator-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    padding: 0 8px;
+    flex-wrap: wrap-reverse;
+    width: 100%;}
+    button.mat-menu-trigger{border: none; background: transparent;padding: 0px;}
+    .mat-icon {height: 12px; width: 12px !important;}
+    thead.clear-th{background-color: transparent !important;}
+.actionButtonGroup.fix{ display: flex;
+    padding: 10px 5px 5px 5px;
+    justify-content: space-evenly;
+    border-top: 1px solid #ccc;}
+
+.actionButtonGroup button.btn.btn-outline-primary, .actionButtonGroup button.btn.btn-primary {width:30%;}
+.mat-tooltip{overflow: inherit !important;     background: #000 !important; position: relative; top: -5px; padding: 4px 8px 4px !important;}
+.mat-tooltip:after{  position: absolute; content: " "; top: -18px; left: 46%; margin-left: -8px; width: 0; height: 0;border-style: solid; border-width: 10px; border-color:transparent transparent #000;}
+.btn-group.fix button:last-child{border-bottom-left-radius: 0px !important; border-top-left-radius: 0px !important; border-top-right-radius: 6px !important; border-bottom-right-radius: 6px !important;}
+.sidebar-sticky .usersList li a.active { background: #F3FAFF;}
+.copyright{display: flex;   align-items: flex-end;    min-height:20px;}

@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-light shadow nav-custom">
+  <a class="navbar-brand d-block" href="#">
+    <img src="../../assets/images/logo.svg" class="img-fluid" />
+  </a>
+  <span class="tagLine"> Command Center Dashboard </span>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav navbar-nav-custom ml-auto">
+      <li class="nav-item refreshedDate" style="width: 245px">
+        <app-data-last-refresh
+          [dataLastRefresh]="dataLastRefresh"
+        ></app-data-last-refresh>
+      </li>
+
+      <li class="nav-item dropdown userProfile" style="width: 212px">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <img
+            src="../../assets/images/david-henry.png"
+            class="img-fluid pr-8"
+            width="30%"
+          />
+
+          <span
+            class="userNameLabel"
+            style="display: inline-block; vertical-align: middle"
+            >David William
+            <br />
+            <span class="sub-text" style="color: #000; font-size: 12px"
+              >Command Center User</span
+            >
+          </span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<app-idle-timeout></app-idle-timeout>

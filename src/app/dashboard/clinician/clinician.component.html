@@ -1,0 +1,32 @@
+<div class="sidebar-sticky">
+  <ul class="usersList">
+    <li *ngFor="let cln of arrClinicians">
+      <a
+        (click)="getAppointmentsByClinicianId(cln.clinicianId)"
+        [ngClass]="[selectedClinicianId === cln.clinicianId ? 'active' : '']"
+        href="javascript:void(0)"
+      >
+        <span
+          class="userProfilePic"
+          [style.border]="cln.appointmentStatusLegend.borderColor"
+          [style.background-color]="cln.appointmentStatusLegend.backgroundColor"
+          >{{ cln?.firstName | initials: cln?.lastName }}</span
+        >
+        <span class="userProfileDetails">
+          <h5>{{ cln?.firstName }} {{ cln?.lastName }}</h5>
+          <p>
+            {{ cln?.jobCode }} - Last Sync
+            {{ cln?.lastSyncTime | lastSyncTime }}
+          </p>
+        </span>
+        <span class="rightArrow"
+          ><img src="../../assets/images/list-arrow.svg"
+        /></span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="sidebar-sticky">
+  <span class="copyright">&#169; 2021 WinWire Technologies Inc.</span>
+</div>

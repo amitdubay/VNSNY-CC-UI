@@ -1,0 +1,84 @@
+<div class="calendarBlock">
+  <div class="calendar-outer" >
+    <span
+      ><img
+        src="../../assets/images/calendar-icon.svg"
+        class="img-fluid"
+        width="90%"
+    /></span>
+    <span style="font-size: 1rem; margin: 0 4px 0 4px" 
+      >{{dateText}}</span
+    >
+    <img
+      src="../../assets/images/down-arrow.svg"
+      class="img-fluid" (click)="toggleCalendar()"
+      
+    />
+
+    <!-- calendar drop down starts here -->
+    <div class="calendar-btn-outer" *ngIf="isShowCalendar">
+      <div class="button-group">
+        <p>
+          <button
+            _ngcontent-vut-c127=""
+            type="button"
+            class="btn"
+            [ngClass]="[isToday?'btn-info':'btn-outline-primary']"
+            (click)="todayClick()"
+          >
+            Today
+          </button>
+        </p>
+        <p>
+          <button _ngcontent-vut-c127="" type="button" (click)="sevenDayClick()" 
+          class="btn"
+            [ngClass]="[is7?'btn-info':'btn-outline-primary']">
+            Next 7 Days
+          </button>
+        </p>
+        <p>
+          <button
+            _ngcontent-vut-c127=""
+            type="button" (click)="thirtyDayClick()"
+            class="btn"
+            [ngClass]="[is30?'btn-info':'btn-outline-primary']"
+          >
+            Next 30 Days
+          </button>
+        </p>
+        <p>
+          <button
+            _ngcontent-vut-c127=""
+            type="button" (click)="sixtyDayClick()"
+            class="btn"
+            [ngClass]="[is60?'btn-info':'btn-outline-primary']"
+          >
+            Next 60 Days
+          </button>
+        </p>
+        <p>
+          <button
+            _ngcontent-vut-c127=""
+            type="button"
+            class="btn btn-primary"
+            (click)="closeCalendar()"
+          >
+            OK
+          </button>
+        </p>
+      </div>
+      <div class="calendar-view">
+        <mat-calendar  [dateClass]="dateClass()" 
+        (selectedChange)="getChangedValue($event)" 
+        #appointment_date1 name="appointment_date1" [minDate]='minDate1' [maxDate]='maxDate1' >
+      </mat-calendar>
+
+        
+        <!-- <mat-calendar #appointment_date2 [startAt]="minDate2"  [dateClass]="dateClassCalendar2()"
+        ></mat-calendar>
+         -->
+      </div>
+    </div>
+    <!-- calendar drop down ends here/. -->
+  </div>
+</div>

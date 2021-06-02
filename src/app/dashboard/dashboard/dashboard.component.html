@@ -1,0 +1,255 @@
+<app-header [dataLastRefresh]="dataLastRefresh"></app-header>
+<div class="body-support-block">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-3 d-none d-md-block sidebar">
+        <div class="leftNavMain">
+          <div class="btn-group fix" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              (click)="toggleClinicianPatient('clinician')"
+              class="btn btn-secondary {{ clinicianActive }} fix"
+            >
+              Clinician
+            </button>
+            <button
+              type="button"
+              (click)="toggleClinicianPatient('patient')"
+              class="btn btn-secondary {{ patientActive }} fix"
+            >
+              Patient
+            </button>
+          </div>
+        </div>
+        <div class="searchBar">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            aria-label="Recipient's username"
+            [(ngModel)]="searchText"
+            (keyup.enter)="onEnter()"
+          />
+          <button class="btn btn-light">
+            <img src="../../assets/images/search-icon.svg" />
+          </button>
+        </div>
+        <div class="filters">
+          <div class="row">
+            <div class="col-md-8 pr-8" *ngIf="isClinician">
+              <div class="form-group">
+                <label for="">LOB</label>
+                <select class="form-control" id="lob" [(ngModel)]="lobSelected">
+                  <option *ngFor="let lob of arrLOB" [value]="lob.lobId">
+                    {{ lob.description }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-12 pr-15" *ngIf="!isClinician">
+              <div class="form-group">
+                <label for="">LOB</label>
+                <select class="form-control" id="lob" [(ngModel)]="lobSelected">
+                  <option *ngFor="let lob of arrLOB" [value]="lob.lobId">
+                    {{ lob.description }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4 pl-8" *ngIf="isShowDiscipline">
+              <div class="form-group">
+                <label for="">Discipline</label>
+
+                <mat-select
+                  [(value)]="disciplineSelected"
+                  #discipline
+                  id="discipline"
+                  class="form-control"
+                  (closed)="handleChangeDiscipline()"
+                  multiple
+                >
+                  <mat-select-trigger>
+                    {{ showDisciplineData() }}
+                  </mat-select-trigger>
+                  <mat-option
+                    *ngFor="let dis of arrDiscipline"
+                    #matOptionDiscipline
+                    (click)="
+                      handleClickOptionDiscipline(
+                        matOptionDiscipline.selected,
+                        dis.desciplineCode
+                      )
+                    "
+                    [value]="dis.desciplineCode"
+                    >{{ dis.description }}</mat-option
+                  >
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-md-4 pr-8">
+              <div class="form-group">
+                <label for="">Region</label>
+                <mat-select
+                  [(ngModel)]="regionSelected"
+                  id="region"
+                  (closed)="handleChangeRegion()"
+                  class="form-control"
+                  multiple
+                >
+                  <mat-select-trigger>
+                    {{ showRegionData() }}
+                  </mat-select-trigger>
+                  <mat-option
+                    #matOptionRegion
+                    *ngFor="let dis of arrRegion"
+                    (click)="
+                      handleClickOptionRegion(
+                        matOptionRegion.selected,
+                        dis.regionId
+                      )
+                    "
+                    [value]="dis.regionId"
+                    >{{ dis.regionName }}</mat-option
+                  >
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-md-4 pr-8 pl-8">
+              <div class="form-group">
+                <label for="">Branch</label>
+                <mat-select
+                  [(value)]="branchSelected"
+                  id="branch"
+                  (closed)="handleChangeBranch()"
+                  class="form-control"
+                  [disabled]="isBranchDisabled"
+                  multiple
+                >
+                  <mat-select-trigger>
+                    {{ showBranchData() }}
+                  </mat-select-trigger>
+                  <mat-option
+                    *ngFor="let dis of arrBranch"
+                    #matOptionBranch
+                    (click)="
+                      handleClickOptionBranch(
+                        matOptionBranch.selected,
+                        dis.branchId
+                      )
+                    "
+                    [value]="dis.branchId"
+                    >{{ dis.branchName }}</mat-option
+                  >
+                </mat-select>
+              </div>
+            </div>
+
+            <div class="col-md-4 pl-8">
+              <div class="form-group">
+                <label for="">Team</label>
+                <mat-select
+                  [(value)]="teamSelected"
+                  id="team"
+                  (closed)="handleChangeTeam()"
+                  class="form-control"
+                  [disabled]="isTeamDisabled"
+                  multiple
+                >
+                  <mat-select-trigger>
+                    {{ showTeamData() }}
+                  </mat-select-trigger>
+                  <mat-option
+                    *ngFor="let dis of arrTeam"
+                    #matOptionTeam
+                    (click)="
+                      handleClickOptionTeam(matOptionTeam.selected, dis.teamId)
+                    "
+                    [value]="dis.teamId"
+                    >{{ dis.teamName }}</mat-option
+                  >
+                </mat-select>
+              </div>
+            </div>
+          </div>
+
+          <div class="actionButtonGroup">
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              (click)="clear()"
+            >
+              Clear
+            </button>
+            <button type="button" class="btn btn-primary" (click)="getData()">
+              Apply
+            </button>
+          </div>
+        </div>
+        <app-clinician
+          *ngIf="clinicians != null"
+          (getAppointmentsByClinicianIdEvent)="
+            getAppointmentsByClinicianId($event)
+          "
+          [clinicians]="clinicians"
+        ></app-clinician>
+        <app-patient
+          *ngIf="patients != null"
+          (getAppointmentsByPatientIdEvent)="getAppointmentsByPatientId($event)"
+          [patients]="patients"
+        ></app-patient>
+      </nav>
+
+      <main role="main" class="rightContentArea">
+        <div class="pageTitleContainer">
+          <h3>{{ breadCrumb }}</h3>
+          <div class="calendarContainer">
+            <app-calendar (onOkClick)="getData()"></app-calendar>
+
+            <div class="pageTabsNav">
+              <button type="button" class="btn btn-primary w-fix active">
+                <img
+                  src="../../assets/images/list-icon.svg"
+                  class="img-fluid"
+                  width="80%"
+                />
+              </button>
+              <button
+                type="button"
+                [disabled]="isMapDisabled"
+                (click)="showMapView()"
+                class="btn btn-secondary w-fix"
+              >
+                <img [src]="mapicon" class="img-fluid" width="80%" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cardsContainer">
+          <div
+            class="card"
+            *ngFor="let cnt of executiveSummary"
+            [class.card-gray]="cnt?.executiveSummaryGreyedOut"
+          >
+            <h3>{{ cnt.executiveSummaryValue }}</h3>
+            <p>{{ cnt.executiveSummaryLabel }}</p>
+          </div>
+        </div>
+        <app-appointment-listview
+          *ngIf="appointments != null"
+          [appointments]="appointments"
+          [isClinician]="isClinician"
+          [appointmentLegends]="appointmentLegends"
+          (showClinicianPopupEvent)="showClinicianPopup($event)"
+          (showPatientPopupEvent)="showPatientPopup($event)"
+        ></app-appointment-listview>
+        <!-- <app-patient-appointment-listview *ngIf="patientsList!=null" [appointments]="patientsList"  
+          [appointmentLegends]="appointmentLegends" (showPatientPopupEvent)="showPatientPopup($event)"></app-patient-appointment-listview> -->
+      </main>
+    </div>
+  </div>
+</div>

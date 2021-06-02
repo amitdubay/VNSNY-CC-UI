@@ -1,0 +1,210 @@
+<mat-dialog-content class="modal-xl">
+  <div class="modal-header">
+    <button
+      type="button"
+      class="close"
+      [mat-dialog-close]="true"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="cli-pop-outer">
+      <div class="cli-initial green">
+        {{ clinician?.firstName | initials: clinician?.lastName }}
+      </div>
+      <div class="cli-name">
+        <h5>
+          <strong>{{ clinician?.firstName }} {{ clinician?.lastName }} </strong>
+        </h5>
+        <p>
+          {{ clinician?.jobCode }} - Last Sync
+          {{ clinician?.lastSyncTime }}
+        </p>
+        <p>
+          <img src="../../../assets/images/cell-icon.svg" class="img-fluid" />
+          {{ clinician?.phoneNumber }}
+        </p>
+        <p></p>
+      </div>
+
+      <ul class="cli-pop-statics">
+        <li
+          *ngFor="let item of executiveSummary"
+          [class.card-gray]="item?.executiveSummaryGreyedOut"
+        >
+          <p>{{ item?.executiveSummaryLabel }}</p>
+          <h2>{{ item?.executiveSummaryValue }}</h2>
+        </li>
+      </ul>
+    </div>
+
+    <div class="tableIndicationBlock">
+      <h4><b>Appointments</b></h4>
+      <app-appointment-status-legend
+        [appointmentStatusLegends]="appointmentStatusLegends"
+      ></app-appointment-status-legend>
+    </div>
+
+    <!-- table starts here -->
+    <div class="mat-elevation-z8 responsive-table example-table-container">
+      <table
+        class="table table-custom"
+        mat-table
+        matSort
+        [dataSource]="dataSource"
+        matSortActive="appointmentTime"
+        matSortDirection="asc"
+        (matSortChange)="onSortData($event)"
+        matSortDisableClear
+      >
+        <!-- Header Row 1 Start -->
+        <ng-container matColumnDef="patientName">
+          <th mat-header-cell *matHeaderCellDef rowspan="2" mat-sort-header>
+            Patient Name
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <h4>
+              {{ element?.patient?.firstName }} {{ element?.patient?.lastName }}
+            </h4>
+            <p>
+              {{ element?.patient?.address?.address1 }}
+              {{ element?.patient?.address?.city }}
+              {{ element?.patient?.address?.state }},
+              {{ element?.patient?.address?.zip }}
+            </p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="acuityCodes">
+          <th mat-header-cell *matHeaderCellDef rowspan="2" style="width: 20%">
+            Acuity Codes
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p *ngFor="let aCode of element.acuityCodes">
+              {{ aCode?.acuityCode }}
+            </p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="appointmentServiceCode">
+          <th mat-header-cell *matHeaderCellDef rowspan="2" mat-sort-header>
+            Appointment Service Code
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex">
+              <div class="align-self-center">
+                <img
+                  *ngIf="
+                    element?.appointmentServiceCodes[0]
+                      ?.appointmentVisitTypeCode
+                  "
+                  [src]="
+                    getAppointmentServiceCodeIcon(
+                      element.appointmentServiceCodes[0]
+                        .appointmentVisitTypeCode
+                    )
+                  "
+                  class="img-fluid"
+                />
+              </div>
+              <div class="align-self-center p-2">
+                <p *ngFor="let serviceCode of element.appointmentServiceCodes">
+                  {{ serviceCode?.appointmentServiceCode }}
+                  ({{
+                    serviceCode?.appointmentProductivityPts | number: "1.2-2"
+                  }})
+                </p>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="appointmentTime">
+          <th mat-header-cell *matHeaderCellDef rowspan="2" mat-sort-header>
+            Appointment Time
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <p>
+              {{
+                element?.appointmentWdoStartTime
+                  | formatAppointmentDateTime
+                    : element?.appointmentWdoEndTime
+                    : true
+              }}
+            </p>
+            <p>
+              {{
+                element?.appointmentWdoStartTime
+                  | formatAppointmentDateTime: element?.appointmentWdoEndTime
+              }}
+            </p>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="appointment">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            [attr.colspan]="2"
+            class="border-0"
+          >
+            Appointment
+          </th>
+        </ng-container>
+
+        <!-- Header Row 1 End -->
+
+        <!-- Header Row 2 Start -->
+        <ng-container matColumnDef="appointmentStart">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            style="
+              padding-left: 0px !important;
+              padding-top: 0px;
+              border-top: 0px;
+            "
+          >
+            Start
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <app-appointment-status
+              [appointmentStatusLegend]="element?.appointmentStartStatusLegend"
+              [tooltipMessage]="element?.appointmentWdoStartTime"
+            ></app-appointment-status>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="appointmentEnd">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            style="text-align: right; padding-top: 0px; border-top: 0px"
+          >
+            End
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <app-appointment-status
+              [appointmentStatusLegend]="element?.appointmentEndStatusLegend"
+              [tooltipMessage]="element?.appointmentActEndTime"
+            ></app-appointment-status>
+          </td>
+        </ng-container>
+
+        <!-- Header Row 2 End -->
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumnsHeader1; sticky: true"
+        ></tr>
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumnsHeader2; sticky: true"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsRows"></tr>
+      </table>
+    </div>
+  </div>
+</mat-dialog-content>

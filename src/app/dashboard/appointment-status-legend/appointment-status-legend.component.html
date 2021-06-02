@@ -1,0 +1,11 @@
+<div class="indication-list-wrapper">
+  <ul>
+    <li *ngFor="let item of appointmentStatusLegends">
+      <span
+        [style.border]="item?.borderColor"
+        [style.background-color]="item?.backgroundColor"
+      ></span>
+      {{ item?.legendLabel }}
+    </li>
+  </ul>
+</div>

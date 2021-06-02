@@ -1,0 +1,13 @@
+<div *ngIf="appointmentStatusLegend">
+  <div *ngIf="!appointmentStatusLegend?.isLegend; else elseBlock">
+    {{ appointmentStatusLegend?.legendLabel }}
+  </div>
+  <ng-template #elseBlock>
+    <span
+      class="status-legend-circle"
+      matTooltip="{{ tooltipMessage | date: 'shortTime' }}"
+      [style.border]="appointmentStatusLegend?.borderColor"
+      [style.background-color]="appointmentStatusLegend?.backgroundColor"
+    ></span>
+  </ng-template>
+</div>

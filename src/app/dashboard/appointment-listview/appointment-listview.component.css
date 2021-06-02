@@ -1,0 +1,53 @@
+
+ 
+ body, html{font-family:"Myriad Pro Regular",Arial, Times;}
+ .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  display: block;
+  height: 34px !important;
+  -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  padding: 0 20px 0 5px !important;}
+
+  .mat-list-base {
+    padding-top: 8px;
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+    height: 150px ;
+    overflow-y: auto;
+}
+
+
+.change-this-name-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  /* background: #ff4f4f !important; */
+}
+
+.indicationList-change-name-later ul {
+  list-style: none;
+  margin: 0 0;
+  padding: 0 0;
+}
+.indicationList-change-name-later li {
+  margin: 0 10px;
+  padding: 0 0;
+  display: inline-block;
+}
+.indicationList-change-name-later li span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: text-bottom;
+  margin-right: 3px;
+  /* background: #ccc; */
+}
+
+::ng-deep .mat-sort-header-container:not(.mat-sort-header-sorted) .mat-sort-header-arrow {
+  opacity: 0.54 !important;
+  transform: translateY(0px) !important;
+}
+

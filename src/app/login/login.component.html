@@ -1,0 +1,43 @@
+<div class="container-fluid" id="login">
+  <div class="row login-height">
+    <div class="col-md-6 col-lg-6 d-flex bg-blue">
+      <div class="login-logo-outer">
+        <img
+          src="../../assets/images/login-logo.svg"
+          alt="VNSNY Logo"
+          title="VNSNY Logo"
+          class="img-fluid d-block"
+          width="540"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-6 d-flex">
+      <div class="login-form">
+        <form>
+          <div class="login-title">Login</div>
+          <div class="form-group">
+            <label>User Name <span class="text-danger">*</span></label>
+            <span class="inputIconBlock">
+              <img src="../../assets/images/user-icon.svg" />
+              <input #userName  type="text" class="form-control" (keyup)="enableLoginButton()"/>
+            </span>
+          </div>
+          <div class="form-group">
+            <label>Password <span class="text-danger">*</span></label>
+            <span class="inputIconBlock">
+              <img src="../../assets/images/padlock-icon.svg" />
+              <input type="password" class="form-control" #password (keyup)="enableLoginButton()" />
+              <button type="button" class="btn btn-showpass">
+                <img [src]="passwordImageURL" (click)="toggleImage()" />
+              </button>
+            </span>
+          </div>
+          <button type="button" [disabled]="isDisabled" (click)="redirectToDashboard()" class="btn {{classEnable}} btn-rounded">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
