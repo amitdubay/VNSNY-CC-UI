@@ -5,6 +5,8 @@ WORKDIR /usr/local/app
 
 COPY ./ /usr/local/app/ 
 
+RUN #!/usr/bin/env node
+
 RUN npm install 
 
 RUN /usr/local/app//node_modules/.bin/ng build  
