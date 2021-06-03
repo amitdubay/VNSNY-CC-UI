@@ -5,7 +5,7 @@ WORKDIR /usr/local/app
 
 COPY ./ /usr/local/app/ 
 
-RUN #!/usr/bin/env node
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN npm install 
 
