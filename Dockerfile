@@ -1,5 +1,5 @@
 
-FROM node:lts-alpine3.13 as build 
+FROM public.ecr.aws/e4f8f6h7/node-lts-alpine3.13:latest as build 
 
 WORKDIR /usr/local/app 
 
@@ -11,7 +11,7 @@ RUN /usr/local/app//node_modules/.bin/ng build
 
 
 
-FROM nginx:stable-alpine-perl 
+FROM public.ecr.aws/e4f8f6h7/nginx-stable-alpine-perl:latest 
  
 RUN rm -rf /usr/share/nginx/html/* && rm -rf /etc/nginx/nginx.conf 
 
