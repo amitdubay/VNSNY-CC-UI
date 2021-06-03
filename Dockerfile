@@ -5,7 +5,7 @@ WORKDIR /usr/local/app
 
 COPY ./ /usr/local/app/ 
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+SHELL ["/bin/bash", "-c"] 
 
 RUN npm install 
 
