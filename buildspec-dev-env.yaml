@@ -8,7 +8,8 @@ phases:
   pre_build:
     commands:
       - $(aws ecr get-login --no-include-email)
-      - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+      - TAG="${CODEBUILD_BUILD_NUMBER}"
+      # - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
       - IMAGE_URI="${REPOSITORY_URI}:${TAG}"
   build:
     commands:
@@ -16,6 +17,8 @@ phases:
   post_build:
     commands:
       - docker push "$IMAGE_URI"
-      - printf '[{"name":"vnsny-dev-artifact","imageUri":"$IMAGE_URI"}]' "$IMAGE_URI" > images.json
+      # - printf '[{"name":"vnsny-dev-artifact","imageUri":"$IMAGE_URI"}]' "$IMAGE_URI" > images.json
 artifacts:
-  files: images.json
+  files:
+    - "**/*"
+  name: "vnsny-ui-$AWS_REGION-$(date +%Y-%m-%d)"
