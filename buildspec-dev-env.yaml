@@ -17,5 +17,5 @@ phases:
     commands:
       - docker push "$IMAGE_URI"
       - printf '[{"name":"vnsny-dev-artifact","imageUri":"$IMAGE_URI"}]' "$IMAGE_URI" > images.json
-  artifacts:
-    files: images.json
+artifacts:
+  files: images.json
