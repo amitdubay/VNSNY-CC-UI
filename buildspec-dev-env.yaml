@@ -21,7 +21,7 @@ phases:
       - $(aws ecr get-login --no-include-email)
       - echo "ECR Login completed"
       - docker push "$IMAGE_URI"
-      - printf '[{"name":"vnsny-ui-dev-artifact","imageUri":"%s"}]' "$IMAGE_URI" > imagedefinitions.json
+      - printf '[{"name":"$CONTAINER_NAME","imageUri":"%s"}]' "$IMAGE_URI" > imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
   files:
