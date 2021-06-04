@@ -26,4 +26,4 @@ phases:
 artifacts:
   files:
     - imagedefinitions.json
-  name: "vnsny-ui-$AWS_REGION-$(date +%Y-%m-%d)"
+  name: "vnsny-ui-imagedefinitions"
