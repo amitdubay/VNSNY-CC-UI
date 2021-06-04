@@ -1,5 +1,5 @@
 
-FROM public.ecr.aws/e4f8f6h7/node-lts-alpine3.13:latest as build 
+FROM node:lts-alpine3.13 as build 
 
 WORKDIR /usr/local/app 
 
@@ -7,11 +7,13 @@ COPY ./ /usr/local/app/
 
 # SHELL ["/bin/sh", "-c"] 
 
-RUN /usr/local/app/scripts.sh
+RUN npm install 
+
+RUN /usr/local/app//node_modules/.bin/ng build  
 
 
 
-FROM public.ecr.aws/e4f8f6h7/nginx-stable-alpine-perl:latest 
+FROM nginx:stable-alpine-perl
  
 RUN rm -rf /usr/share/nginx/html/* && rm -rf /etc/nginx/nginx.conf 
 
