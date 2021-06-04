@@ -9,8 +9,7 @@ COPY ./ /usr/local/app/
 
 RUN npm install 
 
-RUN /usr/local/app//node_modules/.bin/ng build  
-
+RUN /usr/local/app//node_modules/.bin/ng build --configuration=${BUILDCONF}
 
 
 FROM nginx:stable-alpine-perl

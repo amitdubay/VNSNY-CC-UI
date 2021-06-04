@@ -1,3 +1,5 @@
+import { environment } from './../../environments/environment';
+
 export class AppSettings {
   // Idle Timeout
   // Set this to 0(zero) to disable idle timeout
@@ -20,8 +22,8 @@ export class AppSettings {
   public static sixtyDays = 60;
 
   // api URL
-  public static apiURL =
-    'https://mlv91te97f.execute-api.us-east-1.amazonaws.com/{0}';
+  public static apiURL = environment.production;
+  // 'https://mlv91te97f.execute-api.us-east-1.amazonaws.com/{0}';
   //'https://mlv91te97f.execute-api.us-east-1.amazonaws.com/{0}';
   //https://fhkrcmh9dh.execute-api.us-east-2.amazonaws.com/{0} - qa
   public static apiEndPointGetClinicians = 'getClinicians';
