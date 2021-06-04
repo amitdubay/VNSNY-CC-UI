@@ -5,13 +5,9 @@ WORKDIR /usr/local/app
 
 COPY ./ /usr/local/app/ 
 
-SHELL ["/bin/sh", "-c"] 
+# SHELL ["/bin/sh", "-c"] 
 
-RUN npm
-
-RUN npm install 
-
-RUN /usr/local/app//node_modules/.bin/ng build  
+RUN /usr/local/app/scripts.sh
 
 
 
