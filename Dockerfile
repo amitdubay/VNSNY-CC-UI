@@ -7,6 +7,8 @@ COPY ./ /usr/local/app/
 
 SHELL ["/bin/sh", "-c"] 
 
+RUN npmß 
+
 RUN npm install 
 
 RUN /usr/local/app//node_modules/.bin/ng build  
