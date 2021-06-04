@@ -7,7 +7,7 @@ COPY ./ /usr/local/app/
 
 SHELL ["/bin/sh", "-c"] 
 
-RUN npmß 
+RUN npm
 
 RUN npm install 
 
