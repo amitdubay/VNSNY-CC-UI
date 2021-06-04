@@ -22,7 +22,7 @@ export class AppSettings {
   public static sixtyDays = 60;
 
   // api URL
-  public static apiURL = environment.production;
+  public static apiURL = environment.apiUrl;
   // 'https://mlv91te97f.execute-api.us-east-1.amazonaws.com/{0}';
   //'https://mlv91te97f.execute-api.us-east-1.amazonaws.com/{0}';
   //https://fhkrcmh9dh.execute-api.us-east-2.amazonaws.com/{0} - qa
