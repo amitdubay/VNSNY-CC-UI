@@ -10,7 +10,9 @@ COPY ./ /usr/local/app/
 # SHELL ["/bin/sh", "-c"] 
 RUN npm install -g @angular/cli
 
-RUN npm install 
+RUN npm install
+
+RUN echo ${env}
 
 RUN ng build --configuration=${env}
 
