@@ -1,6 +1,8 @@
 
 FROM node:lts-alpine3.13 as build 
 
+ARG BUILDCONF
+
 WORKDIR /usr/local/app 
 
 COPY ./ /usr/local/app/ 
@@ -9,7 +11,7 @@ COPY ./ /usr/local/app/
 
 RUN npm install 
 
-RUN /usr/local/app//node_modules/.bin/ng build --configuration=${BUILDCONF}
+RUN /usr/local/app//node_modules/.bin/ng build --configuration=$BUILDCONF
 
 
 FROM nginx:stable-alpine-perl
