@@ -12,8 +12,9 @@ RUN npm install -g @angular/cli
 
 RUN npm install 
 
-RUN ng build --$env
+RUN ng build --${env}
 
+RUN echo ${env}
 
 FROM nginx:stable-alpine-perl
  
