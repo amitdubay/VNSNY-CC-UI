@@ -8,10 +8,11 @@ WORKDIR /usr/local/app
 COPY ./ /usr/local/app/ 
 
 # SHELL ["/bin/sh", "-c"] 
+RUN npm install -g @angular/cli
 
 RUN npm install 
 
-RUN /usr/local/app//node_modules/.bin/ng build --configuration=$BUILDCONF
+RUN ng build --$BUILDCONF
 
 
 FROM nginx:stable-alpine-perl
