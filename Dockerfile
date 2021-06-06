@@ -12,7 +12,7 @@ RUN npm install -g @angular/cli
 
 RUN npm install 
 
-RUN ng build ----configuration=${env}
+RUN ng build --configuration=${env}
 
 RUN echo ${env}
 
