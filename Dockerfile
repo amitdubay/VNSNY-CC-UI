@@ -1,7 +1,7 @@
 
 FROM node:lts-alpine3.13 as build 
 
-ARG BUILDCONF
+ARG env
 
 WORKDIR /usr/local/app 
 
@@ -12,7 +12,7 @@ RUN npm install -g @angular/cli
 
 RUN npm install 
 
-RUN ng build --$BUILDCONF
+RUN ng build --$env
 
 
 FROM nginx:stable-alpine-perl
