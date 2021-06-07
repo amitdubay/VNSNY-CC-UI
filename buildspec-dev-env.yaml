@@ -13,6 +13,7 @@ phases:
       - IMAGE_URI="${REPOSITORY_URI}:${TAG}"
   build:
     commands:
+      - $(aws ecr get-login --no-include-email)
       - docker build --build-arg env=$ENV_NAME --tag "$IMAGE_URI" .
   post_build:
     commands:
