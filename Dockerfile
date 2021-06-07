@@ -14,7 +14,7 @@ RUN npm install
 
 RUN echo ${env}
 
-RUN ng build --configuration=${env}
+RUN ng build --${env}
 
 RUN echo ${env}
 
