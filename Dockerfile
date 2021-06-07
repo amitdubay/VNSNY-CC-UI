@@ -14,7 +14,7 @@ RUN npm install
 
 RUN echo ${env}
 
-RUN ng build --${env}
+RUN ng build --aot --output-hashing=all --${env}
 
 RUN echo ${env}
 
